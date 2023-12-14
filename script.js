@@ -3,19 +3,25 @@ const tareaInput = document.querySelector("#nuevaTarea")
 const btnAgregar = document.querySelector("#agregarTarea")
 
 const tareas = []
+let newID = 0
 
 btnAgregar.addEventListener('click', () => {
-  //agregar tarea desde el input al array
   let tareaNueva = tareaInput.value
-  tareas.push({
-    id: Date.now(),
-    tarea: tareaNueva,
-    hecha: false
-  })
+  if(tareaNueva.trim() != ''){
+    //agregar tarea desde el input al array
+    tareas.push({
+      id: newID,
+      tarea: tareaNueva,
+      hecha: false
+    })
 
-  tareaInput.value = ''
-  renderTareas()
-
+    //Vacia el input, renderiza la tarea y aumenta el ID
+    tareaInput.value = ''
+    renderTareas()
+    newID++
+  } else {
+    alert('Ingresa una tarea')
+  }
 })
 
 
@@ -25,7 +31,7 @@ function renderTareas(){
   tareas.forEach(t => {
     html += `
     <li>
-      <span>${t.tarea}</span>
+      <span>ID: ${t.id} - ${t.tarea}</span>
       <button onclick="eliminarTarea(${t.id})">Eliminar</button>
       <input type="checkbox" onchange="checkDone(${t.id})" id="${t.id}">
     </li>`
