@@ -2,8 +2,26 @@ const listaDeTareas = document.querySelector("#tareas")
 const tareaInput = document.querySelector("#nuevaTarea")
 const btnAgregar = document.querySelector("#agregarTarea")
 
-const tareas = []
-let newID = 1
+const tareas = [
+  {
+    id: 1,
+    tarea: 'Estudiar JavaScript',
+    hecha: false
+  },
+  {
+    id: 2,
+    tarea: 'Dibujar',
+    hecha: true
+  },
+  {
+    id: 3,
+    tarea: 'Editar fotos',
+    hecha: false
+  },
+]
+renderTareas()
+
+let newID = 4
 
 btnAgregar.addEventListener('click', () => {
   let tareaNueva = tareaInput.value
@@ -30,7 +48,13 @@ function renderTareas(){
     html += `
     <tr>
       <td>${t.id}</td>
-      <td>${t.tarea}</td>
+      <td>
+        <label 
+          for="${t.id}"
+          class="${t.hecha ? "hecha" : ""}">
+          ${t.tarea}
+        </label>
+      </td>
       <td><input 
         type="checkbox" 
         onchange="checkDone(${t.id})" 
@@ -39,7 +63,7 @@ function renderTareas(){
       </td>
       <td>
         <button onclick="eliminarTarea(${t.id})">
-          Eliminar
+          <i class='bx bx-trash'></i>
         </button>
       </td>
     </tr>`
@@ -58,7 +82,7 @@ function checkDone(idTarea){
   const index = tareas.findIndex(t => t.id === idTarea)
   const checkbox = document.getElementById(tareas[index].id)
   tareas[index].hecha = checkbox.checked
-  contarTareas()
+  renderTareas()
 }
 
 function contarTareas(){
