@@ -23,7 +23,14 @@ renderTareas()
 
 let newID = 4
 
-btnAgregar.addEventListener('click', () => {
+btnAgregar.addEventListener('click', agregarTarea )
+tareaInput.addEventListener('keydown', e => {
+  if(e.key === 'Enter'){
+    agregarTarea()
+  }
+})
+
+function agregarTarea(){
   let tareaNueva = tareaInput.value
   if(tareaNueva.trim() != ''){
     //agregar tarea desde el input al array
@@ -40,7 +47,7 @@ btnAgregar.addEventListener('click', () => {
   } else {
     alert('Ingresa una tarea')
   }
-})
+}
 
 function renderTareas(){
   let html = ''
@@ -57,7 +64,7 @@ function renderTareas(){
       </td>
       <td><input 
         type="checkbox" 
-        onchange="checkDone(${t.id})" 
+        onchange="marcarTarea(${t.id})" 
         id="${t.id}"
         ${t.hecha ? "checked" : ""}>
       </td>
@@ -78,7 +85,7 @@ function eliminarTarea(idTarea){
   renderTareas()
 }
 
-function checkDone(idTarea){
+function marcarTarea(idTarea){
   const index = tareas.findIndex(t => t.id === idTarea)
   const checkbox = document.getElementById(tareas[index].id)
   tareas[index].hecha = checkbox.checked
