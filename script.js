@@ -3,7 +3,7 @@ const tareaInput = document.querySelector("#nuevaTarea")
 const btnAgregar = document.querySelector("#agregarTarea")
 
 const tareas = []
-let newID = 0
+let newID = 1
 
 btnAgregar.addEventListener('click', () => {
   let tareaNueva = tareaInput.value
@@ -24,23 +24,29 @@ btnAgregar.addEventListener('click', () => {
   }
 })
 
-
-
 function renderTareas(){
   let html = ''
   tareas.forEach(t => {
     html += `
-    <li>
-      <span>ID: ${t.id} - ${t.tarea}</span>
-      <button onclick="eliminarTarea(${t.id})">Eliminar</button>
-      <input type="checkbox" onchange="checkDone(${t.id})" id="${t.id}">
-    </li>`
+    <tr>
+      <td>${t.id}</td>
+      <td>${t.tarea}</td>
+      <td><input 
+        type="checkbox" 
+        onchange="checkDone(${t.id})" 
+        id="${t.id}"
+        ${t.hecha ? "checked" : ""}>
+      </td>
+      <td>
+        <button onclick="eliminarTarea(${t.id})">
+          Eliminar
+        </button>
+      </td>
+    </tr>`
   })
   listaDeTareas.innerHTML = html
   contarTareas()
 }
-
-
 
 function eliminarTarea(idTarea){
   const indexEliminar = tareas.findIndex(t => t.id === idTarea)
@@ -61,6 +67,7 @@ function contarTareas(){
   
   const tareasHechas = tareas.filter(t => t.hecha)
 
-  totalTareas.textContent = `${tareas.length} Tareas ingresadas`
-  totalHechas.textContent = `${tareasHechas.length} Tareas hechas`
+  totalTareas.textContent = tareas.length
+  totalHechas.textContent = tareasHechas.length
 }
+

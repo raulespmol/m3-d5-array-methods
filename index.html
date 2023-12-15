@@ -10,12 +10,26 @@
   <input id="nuevaTarea"> <button id="agregarTarea">Agregar</button> 
 
   <h3>Tareas: </h3>
-  <ul id="tareas">
-    <!-- Render Tareas -->
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tarea</th>
+      </tr>
+    </thead>
+    <tbody id="tareas">
+      <!-- Render Tareas -->
+    </tbody>
+    <!-- <tr>
+      <td>1</td>
+      <td>Comer</td>
+      <td>eliminar</td>
+      <td>check</td>
+    </tr> -->
+  </table>
 
-  <p>Tareas ingresadas: <span id="cuenta-tareas">0</span></p>
-  <p>Tareas hechas: <span id="cuenta-tareas-hechas">0</span></p>
+  <p>Total: <span id="cuenta-tareas">0</span></p>
+  <p>Realizadas: <span id="cuenta-tareas-hechas">0</span></p>
   
 
   <script src="./script.js"></script>
