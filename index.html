@@ -10,24 +10,34 @@
 <body>
 
   <main>
-    <input id="nuevaTarea">
-    <button id="agregarTarea">Agregar</button> 
+    <div class="box-head">
+      <h2>Todo List </h2>
+      <div class="inputs">
+        <input id="nuevaTarea" placeholder="Agrega una nueva tarea">
+        <button id="agregarTarea"><i class='bx bx-plus' ></i></i></button> 
+      </div>
+    </div>
   
-    <h3>Tareas: </h3>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Tarea</th>
-        </tr>
-      </thead>
-      <tbody id="tareas">
-        <!-- Render Tareas -->
-      </tbody>
-    </table>
+    <div class="box-body">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th></th>
+            <th class="tareas-col">Tarea</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tareas">
+          <!-- Render Tareas -->
+        </tbody>
+      </table>
+    </div>
   
-    <p>Total: <span id="cuenta-tareas"></span></p>
-    <p>Realizadas: <span id="cuenta-tareas-hechas"></span></p>    
+    <div class="box-footer">
+      <p><i class='bx bx-list-ul'></i> Total: <span id="cuenta-tareas"></span></p>
+      <p><i class='bx bx-task' ></i> Realizadas: <span id="cuenta-tareas-hechas"></span></p>
+    </div>
   </main>
   
 

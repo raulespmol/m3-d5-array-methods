@@ -36,7 +36,7 @@ function agregarTarea(){
     //agregar tarea desde el input al array
     tareas.push({
       id: newID,
-      tarea: tareaNueva,
+      tarea: tareaNueva.trim(),
       hecha: false
     })
 
@@ -54,14 +54,7 @@ function renderTareas(){
   tareas.forEach(t => {
     html += `
     <tr>
-      <td>${t.id}</td>
-      <td>
-        <label 
-          for="${t.id}"
-          class="${t.hecha ? "hecha" : ""}">
-          ${t.tarea}
-        </label>
-      </td>
+      <td class="id-td">${t.id}</td>
       <td><input 
         type="checkbox" 
         onchange="marcarTarea(${t.id})" 
@@ -69,9 +62,16 @@ function renderTareas(){
         ${t.hecha ? "checked" : ""}>
       </td>
       <td>
-        <button onclick="eliminarTarea(${t.id})">
-          <i class='bx bx-trash'></i>
-        </button>
+        <label 
+          for="${t.id}"
+          class="${t.hecha ? "hecha" : ""}">
+          ${t.tarea}
+        </label>
+      </td>
+      <td>
+        <div onclick="eliminarTarea(${t.id})" class="button">
+          <i class='bx bx-x'></i>
+        </div>
       </td>
     </tr>`
   })
