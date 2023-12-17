@@ -34,7 +34,7 @@ main {
   border: none;
   border-radius: 15px 0 0 15px;
   padding: 0.5rem;
-  background-color: #fff3d1;
+  background-color: #ffcf4a1a;
 }
 #agregarTarea{
   height: 30px;
@@ -73,7 +73,6 @@ td {
   color: #00000070;
 }
 
-
 label {
   display: block;
 }
@@ -90,6 +89,10 @@ table .button {
 table .button:hover{
   background-color: #ffcf4a;
   cursor: pointer;
+}
+
+.box-footer{
+  color: #777
 }
 
 .hecha {
